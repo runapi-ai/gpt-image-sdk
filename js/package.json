@@ -49,7 +49,7 @@
   ],
   "author": "RunAPI",
   "license": "Apache-2.0",
-  "homepage": "https://runapi.ai/docs/sdk/gpt-image",
+  "homepage": "https://runapi.ai/docs#sdk-gpt-image",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/runapi-ai/gpt-image-sdk.git"
