@@ -9,12 +9,12 @@ module RunApi
     #
     #   # Text-to-image
     #   result = client.text_to_image.run(
-    #     model: "gpt-image/1.5-text-to-image", prompt: "A futuristic cityscape"
+    #     model: "gpt-image-1.5-text-to-image", prompt: "A futuristic cityscape"
     #   )
     #
     #   # Image-to-image
     #   edited = client.edit_image.run(
-    #     model: "gpt-image/1.5-image-to-image",
+    #     model: "gpt-image-1.5-image-to-image",
     #     prompt: "Transform into oil painting",
     #     input_urls: ["https://example.com/photo.jpg"]
     #   )

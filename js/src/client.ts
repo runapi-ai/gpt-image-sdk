@@ -14,13 +14,13 @@ import { EditImage } from './resources/edit-image';
  *
  * // Text-to-image
  * const result = await client.textToImage.run({
- *   model: 'gpt-image/1.5-text-to-image',
+ *   model: 'gpt-image-1.5-text-to-image',
  *   prompt: 'A futuristic cityscape at night',
  * });
  *
  * // Image-to-image
  * const edited = await client.editImage.run({
- *   model: 'gpt-image/1.5-image-to-image',
+ *   model: 'gpt-image-1.5-image-to-image',
  *   prompt: 'Transform into oil painting style',
  *   input_urls: ['https://example.com/photo.jpg'],
  * });

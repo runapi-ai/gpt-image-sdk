@@ -3,8 +3,8 @@
 module RunApi
   module GptImage
     module Types
-      GENERATION_MODELS = %w[gpt-image/1.5-text-to-image].freeze
-      EDIT_MODELS = %w[gpt-image/1.5-image-to-image].freeze
+      GENERATION_MODELS = %w[gpt-image-1.5-text-to-image].freeze
+      EDIT_MODELS = %w[gpt-image-1.5-image-to-image].freeze
       MODELS = (GENERATION_MODELS + EDIT_MODELS).freeze
 
       ASPECT_RATIOS = %w[1:1 2:3 3:2].freeze

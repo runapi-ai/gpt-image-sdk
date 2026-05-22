@@ -1,4 +1,25 @@
-# GPT Image API Skill for RunAPI
+<p align="center">
+  <a href="https://github.com/runapi-ai/gpt-image">
+    <h3 align="center">GPT Image API Skill for RunAPI</h3>
+  </a>
+</p>
+
+<p align="center">
+  Install this agent skill, inspect GPT Image fields, then run jobs through the RunAPI CLI.
+</p>
+
+<p align="center">
+  <a href="https://runapi.ai/models/gpt-image"><strong>Model Reference</strong></a> · <a href="https://github.com/runapi-ai/cli"><strong>CLI</strong></a> · <a href="https://github.com/runapi-ai/gpt-image-sdk"><strong>SDK</strong></a>
+</p>
+
+<div align="center">
+
+[![skills.sh](https://www.skills.sh/b/runapi-ai/gpt-image)](https://www.skills.sh/runapi-ai/gpt-image/gpt-image)
+[![ClawHub](https://img.shields.io/badge/ClawHub-runapi--gpt--image-111827)](https://clawhub.ai/runapi-ai/runapi-gpt-image)
+[![License](https://img.shields.io/github/license/runapi-ai/gpt-image)](https://github.com/runapi-ai/gpt-image/blob/main/LICENSE)
+
+</div>
+<br/>
 
 Generate and edit images with GPT Image 1.5 text-to-image and image-to-image. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate GPT Image through RunAPI.
 
@@ -10,7 +31,18 @@ The canonical agent file is `skills/gpt-image/SKILL.md`.
 npx skills add runapi-ai/gpt-image -g
 ```
 
-Or manually: clone this repo and copy `skills/gpt-image/` into your agent's skills directory.
+Or paste this prompt to your AI agent:
+
+```text
+Install the gpt-image skill for me:
+
+1. Clone https://github.com/runapi-ai/gpt-image
+2. Copy the skills/gpt-image/ directory into your
+   user-level skills directory (e.g. ~/.claude/skills/
+   for Claude Code, ~/.codex/skills/ for Codex).
+3. Verify that SKILL.md is present.
+4. Confirm the install path when done.
+```
 
 ## Quick example
 

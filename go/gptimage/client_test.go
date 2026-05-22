@@ -30,7 +30,7 @@ func TestTextToImageCreate(t *testing.T) {
 	}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
-		Model:  "gpt-image/1.5-text-to-image",
+		Model:  "gpt-image-1.5-text-to-image",
 		Prompt: "a beautiful landscape",
 	})
 	if err != nil {
@@ -40,7 +40,7 @@ func TestTextToImageCreate(t *testing.T) {
 		t.Fatalf("unexpected request: %s %s", stub.method, stub.path)
 	}
 	body := stub.body.(map[string]any)
-	if body["model"] != "gpt-image/1.5-text-to-image" {
+	if body["model"] != "gpt-image-1.5-text-to-image" {
 		t.Fatalf("unexpected model: %v", body["model"])
 	}
 	if body["prompt"] != "a beautiful landscape" {
@@ -80,7 +80,7 @@ func TestEditImageCreate(t *testing.T) {
 	}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.EditImage.Create(context.Background(), EditImageParams{
-		Model:     "gpt-image/1.5-image-to-image",
+		Model:     "gpt-image-1.5-image-to-image",
 		Prompt:    "transform into oil painting",
 		InputURLs: []string{"https://example.com/photo.jpg"},
 	})
@@ -91,7 +91,7 @@ func TestEditImageCreate(t *testing.T) {
 		t.Fatalf("unexpected request: %s %s", stub.method, stub.path)
 	}
 	body := stub.body.(map[string]any)
-	if body["model"] != "gpt-image/1.5-image-to-image" {
+	if body["model"] != "gpt-image-1.5-image-to-image" {
 		t.Fatalf("unexpected model: %v", body["model"])
 	}
 	if resp.ID != "task_edit_123" {

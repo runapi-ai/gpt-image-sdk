@@ -2,7 +2,7 @@
 //
 //	client, err := gptimage.NewClient(option.WithAPIKey("sk-your-api-key"))
 //	result, err := client.TextToImage.Run(ctx, gptimage.TextToImageParams{
-//	    Model: "gpt-image/1.5-text-to-image", Prompt: "A beautiful landscape",
+//	    Model: "gpt-image-1.5-text-to-image", Prompt: "A beautiful landscape",
 //	})
 package gptimage
 
