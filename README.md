@@ -1,4 +1,24 @@
-# GPT Image API SDK for RunAPI
+<p align="center">
+  <a href="https://runapi.ai"><img src="https://runapi.ai/icon.svg" height="56" alt="RunAPI"></a>
+</p>
+
+<h3 align="center">
+  <a href="https://github.com/runapi-ai/gpt-image-sdk">GPT Image API SDK for RunAPI</a>
+</h3>
+
+<p align="center">
+  GPT Image API SDKs for JavaScript, Ruby, and Go on RunAPI.
+</p>
+
+<div align="center">
+
+[![npm](https://img.shields.io/npm/v/@runapi.ai/gpt-image)](https://www.npmjs.com/package/@runapi.ai/gpt-image)
+[![RubyGems](https://img.shields.io/gem/v/runapi-gpt-image)](https://rubygems.org/gems/runapi-gpt-image)
+[![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/gpt-image-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/gpt-image-sdk/go)
+[![License](https://img.shields.io/github/license/runapi-ai/gpt-image-sdk)](https://github.com/runapi-ai/gpt-image-sdk/blob/main/LICENSE)
+
+</div>
+<br/>
 
 The gpt image api SDK packages JavaScript, Ruby, and Go clients for GPT Image on RunAPI. Use this gpt image api SDK for text-to-image, image-to-image, edit, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
 
