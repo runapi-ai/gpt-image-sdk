@@ -30,7 +30,7 @@ func TestTextToImageCreate(t *testing.T) {
 	}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
-		Model:  "gpt-image-1.5-text-to-image",
+		Model:  "gpt-image-1.5",
 		Prompt: "a beautiful landscape",
 	})
 	if err != nil {
@@ -40,7 +40,7 @@ func TestTextToImageCreate(t *testing.T) {
 		t.Fatalf("unexpected request: %s %s", stub.method, stub.path)
 	}
 	body := stub.body.(map[string]any)
-	if body["model"] != "gpt-image-1.5-text-to-image" {
+	if body["model"] != "gpt-image-1.5" {
 		t.Fatalf("unexpected model: %v", body["model"])
 	}
 	if body["prompt"] != "a beautiful landscape" {
@@ -80,9 +80,9 @@ func TestEditImageCreate(t *testing.T) {
 	}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.EditImage.Create(context.Background(), EditImageParams{
-		Model:     "gpt-image-1.5-image-to-image",
-		Prompt:    "transform into oil painting",
-		InputURLs: []string{"https://example.com/photo.jpg"},
+		Model:           "gpt-image-1.5",
+		Prompt:          "transform into oil painting",
+		SourceImageURLs: []string{"https://cdn.runapi.ai/public/samples/photo.jpg"},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -91,8 +91,12 @@ func TestEditImageCreate(t *testing.T) {
 		t.Fatalf("unexpected request: %s %s", stub.method, stub.path)
 	}
 	body := stub.body.(map[string]any)
-	if body["model"] != "gpt-image-1.5-image-to-image" {
+	if body["model"] != "gpt-image-1.5" {
 		t.Fatalf("unexpected model: %v", body["model"])
+	}
+	urls, ok := body["source_image_urls"].([]any)
+	if !ok || len(urls) != 1 || urls[0] != "https://cdn.runapi.ai/public/samples/photo.jpg" {
+		t.Fatalf("unexpected source_image_urls: %v", body["source_image_urls"])
 	}
 	if resp.ID != "task_edit_123" {
 		t.Fatalf("unexpected task ID: %v", resp.ID)

@@ -9,19 +9,19 @@ module RunApi
     #
     #   # Text-to-image
     #   result = client.text_to_image.run(
-    #     model: "gpt-image-1.5-text-to-image", prompt: "A futuristic cityscape"
+    #     model: "gpt-image-1.5", prompt: "A futuristic cityscape"
     #   )
     #
-    #   # Image-to-image
+    #   # Edit image
     #   edited = client.edit_image.run(
-    #     model: "gpt-image-1.5-image-to-image",
+    #     model: "gpt-image-1.5",
     #     prompt: "Transform into oil painting",
-    #     input_urls: ["https://example.com/photo.jpg"]
+    #     source_image_urls: ["https://cdn.runapi.ai/public/samples/photo.jpg"]
     #   )
     class Client
       # @return [Resources::TextToImage] Text-to-image generation operations.
       attr_reader :text_to_image
-      # @return [Resources::EditImage] Image-to-image edit operations.
+      # @return [Resources::EditImage] Image edit operations.
       attr_reader :edit_image
 
       def initialize(api_key: nil, **options)

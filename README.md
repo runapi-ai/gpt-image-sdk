@@ -20,9 +20,9 @@
 </div>
 <br/>
 
-The gpt image api SDK packages JavaScript, Ruby, and Go clients for GPT Image on RunAPI. Use this gpt image api SDK for text-to-image, image-to-image, edit, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
+The gpt image api SDK packages JavaScript, Ruby, and Go clients for GPT Image on RunAPI. Use this gpt image api SDK for text-to-image, image editing, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
 
-GPT Image belongs to the OpenAI catalog on RunAPI. The public model page is https://runapi.ai/models/gpt-image; variant pages below carry pricing, rate-limit, and commercial-usage details. The public `gpt-image-sdk` repository groups the JavaScript, Ruby, and Go packages for this model.
+GPT Image belongs to the OpenAI catalog on RunAPI. The public model page is https://runapi.ai/models/gpt-image and carries pricing, rate-limit, and commercial-usage details. The public `gpt-image-sdk` repository groups the JavaScript, Ruby, and Go packages for this model.
 
 ## Install
 
@@ -73,13 +73,9 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 - Provider comparison: https://runapi.ai/providers/openai
 - Full catalog: https://runapi.ai/models
 
-## Pricing and variants
+## Pricing
 
-Use the most specific gpt image api variant page for pricing, rate limits, and commercial usage:
-- [GPT Image 1.5 text to image](https://runapi.ai/models/gpt-image/1.5-text-to-image)
-- [GPT Image 1.5 image to image](https://runapi.ai/models/gpt-image/1.5-image-to-image)
-
-Default pricing link for the gpt image api SDK: https://runapi.ai/models/gpt-image/1.5-text-to-image
+Use the GPT Image model page for pricing, rate limits, and commercial usage: https://runapi.ai/models/gpt-image
 
 ## FAQ
 
@@ -89,7 +85,7 @@ Install the model package for your language: `@runapi.ai/gpt-image`, `runapi-gpt
 
 ### Where should public links point?
 
-Primary gpt image api links point to https://runapi.ai/models/gpt-image. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/gpt-image/1.5-text-to-image. Provider comparisons point to https://runapi.ai/providers/openai, and broad browsing points to https://runapi.ai/models.
+Primary gpt image api links point to https://runapi.ai/models/gpt-image. Provider comparisons point to https://runapi.ai/providers/openai, and broad browsing points to https://runapi.ai/models.
 
 ## License
 

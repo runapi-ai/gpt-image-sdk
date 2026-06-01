@@ -3,7 +3,7 @@
 module RunApi
   module GptImage
     module Resources
-      # GPT Image 1.5 image-to-image edit resource.
+      # GPT Image 1.5 image edit resource.
       class EditImage
         include RunApi::Core::ResourceHelpers
 
@@ -25,7 +25,7 @@ module RunApi
           poll_until_complete { get(task.id) }
         end
 
-        # Create an image-to-image edit task.
+        # Create an image editing task.
         #
         # @param params [Hash] edit parameters
         # @return [RunApi::GptImage::Types::EditImageResponse] task creation result with id
@@ -54,9 +54,9 @@ module RunApi
             raise Core::ValidationError, "Invalid model: #{model}. Must be: #{Types::EDIT_MODELS.join(", ")}"
           end
 
-          urls = param(params, :input_urls)
+          urls = param(params, :source_image_urls)
           if urls.nil? || (urls.respond_to?(:empty?) && urls.empty?)
-            raise Core::ValidationError, "input_urls is required for image-to-image models"
+            raise Core::ValidationError, "source_image_urls is required for image editing"
           end
 
           raise Core::ValidationError, "aspect_ratio is required" unless param(params, :aspect_ratio)

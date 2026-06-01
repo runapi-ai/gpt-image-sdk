@@ -14,22 +14,22 @@ import { EditImage } from './resources/edit-image';
  *
  * // Text-to-image
  * const result = await client.textToImage.run({
- *   model: 'gpt-image-1.5-text-to-image',
+ *   model: 'gpt-image-1.5',
  *   prompt: 'A futuristic cityscape at night',
  * });
  *
- * // Image-to-image
+ * // Edit image
  * const edited = await client.editImage.run({
- *   model: 'gpt-image-1.5-image-to-image',
+ *   model: 'gpt-image-1.5',
  *   prompt: 'Transform into oil painting style',
- *   input_urls: ['https://example.com/photo.jpg'],
+ *   source_image_urls: ['https://cdn.runapi.ai/public/samples/photo.jpg'],
  * });
  * ```
  */
 export class GptImageClient {
   /** Text-to-image generation operations. */
   public readonly textToImage: TextToImage;
-  /** Image-to-image edit operations. */
+  /** Image edit operations. */
   public readonly editImage: EditImage;
 
   constructor(options: ClientOptions = {}) {

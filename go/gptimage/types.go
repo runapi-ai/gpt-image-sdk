@@ -3,20 +3,20 @@ package gptimage
 type TaskStatus string
 
 type TextToImageParams struct {
-	Model       string `json:"model" help:"required; gpt-image-1.5-text-to-image"`
+	Model       string `json:"model" help:"required; model slug"`
 	Prompt      string `json:"prompt" help:"required; text description of the desired image"`
-	AspectRatio string `json:"aspect_ratio" help:"required; 1:1, 2:3, or 3:2"`
-	Quality     string `json:"quality" help:"required; medium or high"`
+	AspectRatio string `json:"aspect_ratio" help:"required; output aspect ratio"`
+	Quality     string `json:"quality" help:"required; quality preset"`
 	CallbackURL string `json:"callback_url,omitempty" help:"optional; webhook URL"`
 }
 
 type EditImageParams struct {
-	Model       string   `json:"model" help:"required; gpt-image-1.5-image-to-image"`
-	Prompt      string   `json:"prompt" help:"required; text description of the desired edit"`
-	InputURLs   []string `json:"input_urls" help:"required; 1-16 input image URLs"`
-	AspectRatio string   `json:"aspect_ratio" help:"required; 1:1, 2:3, or 3:2"`
-	Quality     string   `json:"quality" help:"required; medium or high"`
-	CallbackURL string   `json:"callback_url,omitempty" help:"optional; webhook URL"`
+	Model           string   `json:"model" help:"required; model slug"`
+	Prompt          string   `json:"prompt" help:"required; text description of the desired edit"`
+	SourceImageURLs []string `json:"source_image_urls" help:"required; 1-16 source image URLs"`
+	AspectRatio     string   `json:"aspect_ratio" help:"required; output aspect ratio"`
+	Quality         string   `json:"quality" help:"required; quality preset"`
+	CallbackURL     string   `json:"callback_url,omitempty" help:"optional; webhook URL"`
 }
 
 type AsyncTaskResponse struct {

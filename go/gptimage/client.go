@@ -2,7 +2,7 @@
 //
 //	client, err := gptimage.NewClient(option.WithAPIKey("sk-your-api-key"))
 //	result, err := client.TextToImage.Run(ctx, gptimage.TextToImageParams{
-//	    Model: "gpt-image-1.5-text-to-image", Prompt: "A beautiful landscape",
+//	    Model: "gpt-image-1.5", Prompt: "A beautiful landscape",
 //	})
 package gptimage
 
@@ -22,7 +22,7 @@ const (
 type Client struct {
 	// TextToImage provides text-to-image generation operations.
 	TextToImage *TextToImage
-	// EditImage provides image-to-image edit operations.
+	// EditImage provides image edit operations.
 	EditImage *EditImage
 }
 
@@ -63,7 +63,7 @@ func (r *TextToImage) Run(ctx context.Context, params TextToImageParams, opts ..
 	return core.RunAsync(ctx, func(ctx context.Context) (*core.TaskCreateResponse, error) { return r.Create(ctx, params, opts...) }, func(ctx context.Context, id string) (*TextToImageResponse, error) { return r.Get(ctx, id, opts...) }, pollingOptions)
 }
 
-// EditImage handles image-to-image edit tasks.
+// EditImage handles image edit tasks.
 type EditImage struct{ http core.HTTPClient }
 
 func (r *EditImage) Create(ctx context.Context, params EditImageParams, opts ...option.RequestOption) (*core.TaskCreateResponse, error) {

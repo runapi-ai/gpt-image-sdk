@@ -1,8 +1,9 @@
 import type { AsyncTaskStatus } from '@runapi.ai/core';
 
 // Model types
-export type GptImageTextToImageModel = 'gpt-image-1.5-text-to-image';
-export type GptImageEditImageModel = 'gpt-image-1.5-image-to-image';
+export type GptImageModel = 'gpt-image-1.5';
+export type GptImageTextToImageModel = GptImageModel;
+export type GptImageEditImageModel = GptImageModel;
 
 // Aspect ratio
 export type AspectRatio = '1:1' | '2:3' | '3:2';
@@ -19,11 +20,11 @@ export interface TextToImageParams {
   callback_url?: string;
 }
 
-// Image-to-image edit params
+// Image edit params
 export interface EditImageParams {
   model: GptImageEditImageModel;
   prompt: string;
-  input_urls: string[];
+  source_image_urls: string[];
   aspect_ratio: AspectRatio;
   quality: Quality;
   callback_url?: string;

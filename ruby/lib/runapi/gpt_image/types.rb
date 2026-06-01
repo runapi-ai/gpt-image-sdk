@@ -3,9 +3,9 @@
 module RunApi
   module GptImage
     module Types
-      GENERATION_MODELS = %w[gpt-image-1.5-text-to-image].freeze
-      EDIT_MODELS = %w[gpt-image-1.5-image-to-image].freeze
-      MODELS = (GENERATION_MODELS + EDIT_MODELS).freeze
+      MODELS = %w[gpt-image-1.5].freeze
+      GENERATION_MODELS = MODELS
+      EDIT_MODELS = MODELS
 
       ASPECT_RATIOS = %w[1:1 2:3 3:2].freeze
       QUALITY_VALUES = %w[medium high].freeze
@@ -17,7 +17,7 @@ module RunApi
       class TextToImageResponse < RunApi::Core::TaskResponse
         required :id, String
         optional :status, String, enum: -> { RunApi::Core::TaskResponse::Status::ALL }
-        optional :images, [ -> { Image } ]
+        optional :images, [-> { Image }]
         optional :error, String
       end
 
@@ -27,7 +27,7 @@ module RunApi
       # `status: "completed"`. `images` is required so consumers never have to
       # null-check it on a successful task.
       class CompletedTextToImageResponse < TextToImageResponse
-        required :images, [ -> { Image } ]
+        required :images, [-> { Image }]
       end
 
       CompletedEditImageResponse = CompletedTextToImageResponse

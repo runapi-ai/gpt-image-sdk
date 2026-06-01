@@ -13,15 +13,15 @@ describe('EditImage', () => {
   });
 
   describe('create', () => {
-    it('should send correct request for image-to-image edit', async () => {
+    it('should send correct request for image editing', async () => {
       const mockResponse: TaskCreateResponse = { id: 'task-edit-123', status: 'processing' };
       vi.mocked(mockHttp.request).mockResolvedValueOnce(mockResponse);
 
       const editImage = new EditImage(mockHttp);
       const result = await editImage.create({
-        model: 'gpt-image-1.5-image-to-image',
+        model: 'gpt-image-1.5',
         prompt: 'Transform into oil painting',
-        input_urls: ['https://example.com/photo.jpg'],
+        source_image_urls: ['https://cdn.runapi.ai/public/samples/photo.jpg'],
         aspect_ratio: '3:2',
         quality: 'high',
       });
@@ -31,9 +31,9 @@ describe('EditImage', () => {
         '/api/v1/gpt_image/edit_image',
         {
           body: {
-            model: 'gpt-image-1.5-image-to-image',
+            model: 'gpt-image-1.5',
             prompt: 'Transform into oil painting',
-            input_urls: ['https://example.com/photo.jpg'],
+            source_image_urls: ['https://cdn.runapi.ai/public/samples/photo.jpg'],
             aspect_ratio: '3:2',
             quality: 'high',
           },
@@ -42,20 +42,20 @@ describe('EditImage', () => {
       expect(result).toEqual(mockResponse);
     });
 
-    it('should send multiple input_urls', async () => {
+    it('should send multiple source_image_urls', async () => {
       const mockResponse: TaskCreateResponse = { id: 'task-edit-456', status: 'processing' };
       vi.mocked(mockHttp.request).mockResolvedValueOnce(mockResponse);
 
       const editImage = new EditImage(mockHttp);
       await editImage.create({
-        model: 'gpt-image-1.5-image-to-image',
+        model: 'gpt-image-1.5',
         prompt: 'Combine these images',
-        input_urls: ['https://example.com/photo1.jpg', 'https://example.com/photo2.jpg'],
+        source_image_urls: ['https://cdn.runapi.ai/public/samples/photo-1.jpg', 'https://cdn.runapi.ai/public/samples/photo-2.jpg'],
       });
 
       const call = vi.mocked(mockHttp.request).mock.calls[0];
       const body = (call[2] as any).body;
-      expect(body.input_urls).toHaveLength(2);
+      expect(body.source_image_urls).toHaveLength(2);
     });
   });
 
