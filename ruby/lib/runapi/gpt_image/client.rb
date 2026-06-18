@@ -2,7 +2,9 @@
 
 module RunApi
   module GptImage
-    # GPT Image 1.5 image generation API client.
+    # GPT Image 1.5 generation and editing API client.
+    #
+    # Both aspect_ratio and quality are required for all operations.
     #
     # @example
     #   client = RunApi::GptImage::Client.new(api_key: "your-api-key")
@@ -18,17 +20,14 @@ module RunApi
     #     prompt: "Transform into oil painting",
     #     source_image_urls: ["https://cdn.runapi.ai/public/samples/photo.jpg"]
     #   )
-    class Client
+    class Client < RunApi::Core::Client
       # @return [Resources::TextToImage] Text-to-image generation operations.
       attr_reader :text_to_image
       # @return [Resources::EditImage] Image edit operations.
       attr_reader :edit_image
 
       def initialize(api_key: nil, **options)
-        @api_key = Core::Auth.resolve_api_key(api_key)
-
-        client_options = Core::ClientOptions.new(api_key: @api_key, **options)
-        http = client_options.http_client || Core::HttpClient.new(client_options)
+        super
         @text_to_image = Resources::TextToImage.new(http)
         @edit_image = Resources::EditImage.new(http)
       end

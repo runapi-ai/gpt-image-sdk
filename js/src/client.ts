@@ -1,9 +1,11 @@
-import { createHttpClient, type ClientOptions } from '@runapi.ai/core';
+import { BaseClient, type ClientOptions } from '@runapi.ai/core';
 import { TextToImage } from './resources/text-to-image';
 import { EditImage } from './resources/edit-image';
 
 /**
- * GPT Image 1.5 text-to-image API client.
+ * GPT Image 1.5 generation and editing API client.
+ *
+ * Both `aspect_ratio` and `quality` are required for all operations.
  *
  * @example
  * ```typescript
@@ -26,15 +28,15 @@ import { EditImage } from './resources/edit-image';
  * });
  * ```
  */
-export class GptImageClient {
+export class GptImageClient extends BaseClient {
   /** Text-to-image generation operations. */
   public readonly textToImage: TextToImage;
   /** Image edit operations. */
   public readonly editImage: EditImage;
 
   constructor(options: ClientOptions = {}) {
-    const http = createHttpClient(options);
-    this.textToImage = new TextToImage(http);
-    this.editImage = new EditImage(http);
+    super(options);
+    this.textToImage = new TextToImage(this.http);
+    this.editImage = new EditImage(this.http);
   }
 }
