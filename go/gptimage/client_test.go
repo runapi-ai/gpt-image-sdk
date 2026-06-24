@@ -30,8 +30,10 @@ func TestTextToImageCreate(t *testing.T) {
 	}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
-		Model:  "gpt-image-1.5",
-		Prompt: "a beautiful landscape",
+		Model:       "gpt-image-1.5",
+		Prompt:      "a beautiful landscape",
+		AspectRatio: "1:1",
+		Quality:     "high",
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -83,6 +85,8 @@ func TestEditImageCreate(t *testing.T) {
 		Model:           "gpt-image-1.5",
 		Prompt:          "transform into oil painting",
 		SourceImageURLs: []string{"https://cdn.runapi.ai/public/samples/photo.jpg"},
+		AspectRatio:     "3:2",
+		Quality:         "high",
 	})
 	if err != nil {
 		t.Fatal(err)

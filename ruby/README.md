@@ -7,13 +7,13 @@ This gpt image api README is the Ruby package guide inside the public `gpt-image
 ## Install
 
 ```bash
-gem install runapi-gpt-image
+gem install runapi-gpt_image
 ```
 
 ## Quick start
 
 ```ruby
-require "runapi-gpt-image"
+require "runapi-gpt_image"
 
 client = RunApi::GptImage::Client.new
 task = client.generations.create(

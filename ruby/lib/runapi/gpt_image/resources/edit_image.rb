@@ -31,7 +31,7 @@ module RunApi
         # @return [RunApi::GptImage::Types::EditImageResponse] task creation result with id
         def create(**params)
           params = compact_params(params)
-          validate_params!(params)
+          validate_contract!(CONTRACT["edit-image"], params)
           request(:post, ENDPOINT, body: params)
         end
 
@@ -41,28 +41,6 @@ module RunApi
         # @return [RunApi::GptImage::Types::EditImageResponse] current edit status
         def get(id)
           request(:get, "#{ENDPOINT}/#{id}")
-        end
-
-        private
-
-        def validate_params!(params)
-          raise Core::ValidationError, "model is required" unless param(params, :model)
-          raise Core::ValidationError, "prompt is required" unless param(params, :prompt)
-
-          model = param(params, :model)
-          unless Types::EDIT_MODELS.include?(model)
-            raise Core::ValidationError, "Invalid model: #{model}. Must be: #{Types::EDIT_MODELS.join(", ")}"
-          end
-
-          urls = param(params, :source_image_urls)
-          if urls.nil? || (urls.respond_to?(:empty?) && urls.empty?)
-            raise Core::ValidationError, "source_image_urls is required for image editing"
-          end
-
-          raise Core::ValidationError, "aspect_ratio is required" unless param(params, :aspect_ratio)
-          validate_optional!(params, :aspect_ratio, Types::ASPECT_RATIOS)
-          raise Core::ValidationError, "quality is required" unless param(params, :quality)
-          validate_optional!(params, :quality, Types::QUALITY_VALUES)
         end
       end
     end

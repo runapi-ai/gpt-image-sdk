@@ -1,7 +1,10 @@
 {
   "name": "@runapi.ai/gpt-image",
+  "runapi": {
+    "slug": "gpt-image"
+  },
   "version": "0.2.6",
-  "description": "RunAPI GPT Image SDK for JavaScript, Ruby, and Go",
+  "description": "RunAPI GPT Image SDK for text-to-image and image editing workflows in JavaScript, Python, Ruby, Go, and Java",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -47,7 +50,15 @@
     "sdk",
     "typescript",
     "ruby",
-    "golang"
+    "golang",
+    "java",
+    "python",
+    "maven",
+    "gradle",
+    "image-generation",
+    "text-to-image",
+    "image-api",
+    "gpt-image-api"
   ],
   "author": "RunAPI",
   "license": "Apache-2.0",

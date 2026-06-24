@@ -51,6 +51,8 @@ describe('EditImage', () => {
         model: 'gpt-image-1.5',
         prompt: 'Combine these images',
         source_image_urls: ['https://cdn.runapi.ai/public/samples/photo-1.jpg', 'https://cdn.runapi.ai/public/samples/photo-2.jpg'],
+        aspect_ratio: '3:2',
+        quality: 'high',
       });
 
       const call = vi.mocked(mockHttp.request).mock.calls[0];

@@ -146,19 +146,19 @@ def test_run_narrows_completed_type():
 
 def test_requires_model():
     client = GptImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="model is required"):
+    with pytest.raises(ValidationError, match="model must be one of: gpt-image-1.5"):
         client.text_to_image.create(prompt="hi there")
 
 
 def test_requires_prompt():
     client = GptImageClient(api_key="k", http_client=FakeHttp())
     with pytest.raises(ValidationError, match="prompt is required"):
-        client.text_to_image.create(model="gpt-image-1.5")
+        client.text_to_image.create(model="gpt-image-1.5", aspect_ratio="1:1", quality="high")
 
 
 def test_rejects_unknown_model():
     client = GptImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid model: nope. Must be: gpt-image-1.5"):
+    with pytest.raises(ValidationError, match="model must be one of: gpt-image-1.5"):
         client.text_to_image.create(model="nope", prompt="hi there")
 
 
@@ -170,7 +170,7 @@ def test_requires_aspect_ratio():
 
 def test_rejects_invalid_aspect_ratio():
     client = GptImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid aspect_ratio"):
+    with pytest.raises(ValidationError, match="aspect_ratio must be one of: 1:1, 2:3, 3:2"):
         client.text_to_image.create(
             model="gpt-image-1.5", prompt="hi there", aspect_ratio="9:16", quality="high"
         )
@@ -184,7 +184,7 @@ def test_requires_quality():
 
 def test_rejects_invalid_quality():
     client = GptImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid quality"):
+    with pytest.raises(ValidationError, match="quality must be one of: medium, high"):
         client.text_to_image.create(
             model="gpt-image-1.5", prompt="hi there", aspect_ratio="1:1", quality="low"
         )
@@ -192,7 +192,7 @@ def test_rejects_invalid_quality():
 
 def test_edit_requires_source_image_urls():
     client = GptImageClient(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="source_image_urls is required for image editing"):
+    with pytest.raises(ValidationError, match="source_image_urls is required"):
         client.edit_image.create(
             model="gpt-image-1.5", prompt="make it pop", aspect_ratio="1:1", quality="high"
         )

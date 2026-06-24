@@ -5,15 +5,6 @@ module RunApi
     # Type definitions and constants for GPT Image 1.5.
     # Both aspect_ratio and quality are required for all operations.
     module Types
-      MODELS = %w[gpt-image-1.5].freeze
-      GENERATION_MODELS = MODELS
-      EDIT_MODELS = MODELS
-
-      # Required for all operations.
-      ASPECT_RATIOS = %w[1:1 2:3 3:2].freeze
-      # Higher quality takes longer but produces finer detail.
-      QUALITY_VALUES = %w[medium high].freeze
-
       # A single generated image with its CDN URL.
       class Image < RunApi::Core::BaseModel
         optional :url, String

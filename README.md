@@ -7,61 +7,104 @@
 </h3>
 
 <p align="center">
-  GPT Image API SDKs for JavaScript, Ruby, and Go on RunAPI.
+  GPT Image API SDKs for JavaScript, Python, Ruby, Go, and Java on RunAPI.
 </p>
 
 <div align="center">
 
 [![npm](https://img.shields.io/npm/v/@runapi.ai/gpt-image)](https://www.npmjs.com/package/@runapi.ai/gpt-image)
-[![RubyGems](https://img.shields.io/gem/v/runapi-gpt-image)](https://rubygems.org/gems/runapi-gpt-image)
+[![PyPI](https://img.shields.io/pypi/v/runapi-gpt-image)](https://pypi.org/project/runapi-gpt-image/)
+[![RubyGems](https://img.shields.io/gem/v/runapi-gpt_image)](https://rubygems.org/gems/runapi-gpt_image)
 [![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/gpt-image-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/gpt-image-sdk/go)
+[![Maven Central](https://img.shields.io/maven-central/v/ai.runapi/runapi-gpt-image)](https://central.sonatype.com/artifact/ai.runapi/runapi-gpt-image)
 [![License](https://img.shields.io/github/license/runapi-ai/gpt-image-sdk)](https://github.com/runapi-ai/gpt-image-sdk/blob/main/LICENSE)
 
 </div>
 <br/>
 
-The gpt image api SDK packages JavaScript, Ruby, and Go clients for GPT Image on RunAPI. Use this gpt image api SDK for text-to-image, image editing, and creative production workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
+The GPT Image API SDK packages JavaScript, Python, Ruby, Go, and Java clients for GPT Image on RunAPI. Use it for text-to-image and image editing workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
 
-GPT Image belongs to the OpenAI catalog on RunAPI. The public model page is https://runapi.ai/models/gpt-image and carries pricing, rate-limit, and commercial-usage details. The public `gpt-image-sdk` repository groups the JavaScript, Ruby, and Go packages for this model.
+GPT Image is listed in the RunAPI model catalog at https://runapi.ai/models/gpt-image. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `gpt-image-sdk` repository groups the language packages, examples, CI, and release tags for this model.
 
 ## Install
 
 ```bash
 npm install @runapi.ai/gpt-image
-gem install runapi-gpt-image
+pip install runapi-gpt-image
+gem install runapi-gpt_image
 go get github.com/runapi-ai/gpt-image-sdk/go@latest
+```
+
+Gradle:
+
+```kotlin
+dependencies {
+  implementation("ai.runapi:runapi-gpt-image:0.1.0")
+}
+```
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>ai.runapi</groupId>
+  <artifactId>runapi-gpt-image</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
+Use the Java BOM when installing multiple RunAPI Java modules:
+
+```kotlin
+dependencies {
+  implementation(platform("ai.runapi:runapi-bom:0.1.0"))
+  implementation("ai.runapi:runapi-gpt-image")
+}
 ```
 
 ## What you can build
 
-- Build product imagery, creative automation, design previews, and agent image workflows with the gpt image api SDK.
-- Keep one model-specific repository while installing only the language package your app needs.
+- Build apps, agent workflows, batch jobs, and production services around GPT Image requests.
+- Install only the language package your app needs while keeping one model-specific repository for docs and releases.
 - Use `create` for submit-only jobs, `get` for status lookup, and `run` for submit-and-poll scripts.
-- Handle authentication, validation, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
+- Upload local files, URL files, or base64 files through shared RunAPI file helpers.
+- Handle validation, authentication, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
 
-The JavaScript client exposes generations, edits resources, and the Ruby and Go packages mirror the same RunAPI task lifecycle.
+## Java quick start
 
-## JavaScript quick start
+```java
+import ai.runapi.gptimage.GptImageClient;
+import ai.runapi.gptimage.types.TextToImageParams;
+import ai.runapi.gptimage.types.CompletedTextToImageResponse;
+import ai.runapi.gptimage.types.TextToImageModel;
 
-```typescript
-import { GptImageClient } from '@runapi.ai/gpt-image';
+GptImageClient client = GptImageClient.builder()
+    .apiKey(System.getenv("RUNAPI_API_KEY"))
+    .build();
 
-const client = new GptImageClient();
-
-const task = await client.generations.create({
-  // Pass the GPT Image request body documented at https://runapi.ai/docs#gpt-image.
-});
-
-const status = await client.generations.get(task.id);
+CompletedTextToImageResponse result = client.textToImage().run(
+    TextToImageParams.builder()
+        .model(TextToImageModel.GPT_IMAGE_1_5)
+        .prompt("A clean editorial photo of a ceramic lamp on a walnut table")
+        .aspectRatio("1:1")
+        .quality("high")
+        .build()
+);
 ```
 
-For short scripts, use `run` with the same JSON body to create the task and wait for completion. For web request handlers, prefer `create` plus webhook or later `get` polling so the server does not hold a worker open.
+Java packages target Java 8 bytecode and are tested on Java 8, 11, 17, and 21. Each model artifact depends on `ai.runapi:runapi-core`, so application code normally installs only `ai.runapi:runapi-gpt-image`.
+
+## Task lifecycle
+
+Most media endpoints are asynchronous. `create()` submits a task and returns its id, `get(id)` fetches the latest task state, and `run(params)` creates the task and polls until it reaches a terminal state. In web request handlers, prefer `create()` plus webhook or later `get()` polling so the server does not hold a worker open.
 
 ## Repository layout
 
 - `js/` publishes `@runapi.ai/gpt-image`.
-- `ruby/` publishes `runapi-gpt-image` when RubyGems publishing resumes.
+- `python/` publishes `runapi-gpt-image`.
+- `ruby/` publishes `runapi-gpt_image` when RubyGems publishing resumes.
 - `go/` publishes `github.com/runapi-ai/gpt-image-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
+- `java/` publishes `ai.runapi:runapi-gpt-image` and depends on `ai.runapi:runapi-core`.
 
 ## Public links
 
@@ -73,23 +116,26 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 - Provider comparison: https://runapi.ai/providers/openai
 - Full catalog: https://runapi.ai/models
 
-## Pricing
+## Pricing and variants
 
-Use the GPT Image model page for pricing, rate limits, and commercial usage: https://runapi.ai/models/gpt-image
+Use the most specific GPT Image variant page for pricing, rate limits, and commercial usage:
+- [GPT Image 1.5](https://runapi.ai/models/gpt-image)
 
-## Generated file storage
+Default pricing link for the GPT Image SDK: https://runapi.ai/models/gpt-image
+
+## File storage
 
 RunAPI-generated file URLs are temporary. Download and store generated images, videos, audio, or other files in your own durable storage within 7 days; do not treat returned URLs as long-term assets.
 
 ## FAQ
 
-### Which package should I install for gpt image api work?
+### Which package should I install for GPT Image work?
 
-Install the model package for your language: `@runapi.ai/gpt-image`, `runapi-gpt-image`, or `github.com/runapi-ai/gpt-image-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/gpt-image` on npm, `runapi-gpt-image` on PyPI, `runapi-gpt_image` on RubyGems, `github.com/runapi-ai/gpt-image-sdk/go`, or `ai.runapi:runapi-gpt-image`. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
-Primary gpt image api links point to https://runapi.ai/models/gpt-image. Provider comparisons point to https://runapi.ai/providers/openai, and broad browsing points to https://runapi.ai/models.
+Primary GPT Image links point to https://runapi.ai/models/gpt-image. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/gpt-image. Provider comparisons point to https://runapi.ai/providers/openai, and broad browsing points to https://runapi.ai/models.
 
 ## License
 
