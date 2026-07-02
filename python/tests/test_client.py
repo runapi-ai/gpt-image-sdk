@@ -101,7 +101,7 @@ def test_edit_image_create_posts_compacted_body():
     result = client.edit_image.create(
         model="gpt-image-1.5",
         prompt="oil painting",
-        source_image_urls=["https://example.com/a.jpg"],
+        source_image_urls=["https://runapi.ai/a.jpg"],
         aspect_ratio="2:3",
         quality="medium",
     )
@@ -112,7 +112,7 @@ def test_edit_image_create_posts_compacted_body():
             {
                 "model": "gpt-image-1.5",
                 "prompt": "oil painting",
-                "source_image_urls": ["https://example.com/a.jpg"],
+                "source_image_urls": ["https://runapi.ai/a.jpg"],
                 "aspect_ratio": "2:3",
                 "quality": "medium",
             },
