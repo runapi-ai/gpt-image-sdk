@@ -7,14 +7,14 @@
 </h3>
 
 <p align="center">
-  GPT Image API SDKs for JavaScript, Python, Ruby, Go, and Java on RunAPI.
+  GPT Image API SDKs for JavaScript, Python, Ruby, Go, Java, and PHP on RunAPI.
 </p>
 
 <div align="center">
 
 [![npm](https://img.shields.io/npm/v/@runapi.ai/gpt-image)](https://www.npmjs.com/package/@runapi.ai/gpt-image)
 [![PyPI](https://img.shields.io/pypi/v/runapi-gpt-image)](https://pypi.org/project/runapi-gpt-image/)
-[![RubyGems](https://img.shields.io/gem/v/runapi-gpt_image)](https://rubygems.org/gems/runapi-gpt_image)
+[![RubyGems](https://img.shields.io/gem/v/runapi-gpt-image)](https://rubygems.org/gems/runapi-gpt-image)
 [![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/gpt-image-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/gpt-image-sdk/go)
 [![Maven Central](https://img.shields.io/maven-central/v/ai.runapi/runapi-gpt-image)](https://central.sonatype.com/artifact/ai.runapi/runapi-gpt-image)
 [![License](https://img.shields.io/github/license/runapi-ai/gpt-image-sdk)](https://github.com/runapi-ai/gpt-image-sdk/blob/main/LICENSE)
@@ -22,16 +22,16 @@
 </div>
 <br/>
 
-The GPT Image API SDK packages JavaScript, Python, Ruby, Go, and Java clients for GPT Image on RunAPI. Use it for text-to-image and image editing workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
+The GPT Image API SDK packages JavaScript, Python, Ruby, Go, Java, and PHP clients for GPT Image on RunAPI. Use it for text-to-image and image editing workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
 
-GPT Image is listed in the RunAPI model catalog at https://runapi.ai/models/gpt-image. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `gpt-image-sdk` repository groups the language packages, examples, CI, and release tags for this model.
+GPT Image is listed in the RunAPI model catalog at https://runapi.ai/models/gpt-image. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `gpt-image-sdk` repository groups the non-PHP language packages, examples, CI, and release tags for this model. The PHP package is released from a split Composer repository.
 
 ## Install
 
 ```bash
 npm install @runapi.ai/gpt-image
 pip install runapi-gpt-image
-gem install runapi-gpt_image
+gem install runapi-gpt-image
 go get github.com/runapi-ai/gpt-image-sdk/go@latest
 ```
 
@@ -39,7 +39,7 @@ Gradle:
 
 ```kotlin
 dependencies {
-  implementation("ai.runapi:runapi-gpt-image:0.1.0")
+  implementation("ai.runapi:runapi-gpt-image:0.1.1")
 }
 ```
 
@@ -49,7 +49,7 @@ Maven:
 <dependency>
   <groupId>ai.runapi</groupId>
   <artifactId>runapi-gpt-image</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
@@ -57,10 +57,12 @@ Use the Java BOM when installing multiple RunAPI Java modules:
 
 ```kotlin
 dependencies {
-  implementation(platform("ai.runapi:runapi-bom:0.1.0"))
+  implementation(platform("ai.runapi:runapi-bom:0.1.7"))
   implementation("ai.runapi:runapi-gpt-image")
 }
 ```
+
+The PHP package is published from the split Composer repository as `runapi-ai/gpt-image`; see https://github.com/runapi-ai/gpt-image-php for PHP install and examples.
 
 ## What you can build
 
@@ -102,7 +104,7 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 
 - `js/` publishes `@runapi.ai/gpt-image`.
 - `python/` publishes `runapi-gpt-image`.
-- `ruby/` publishes `runapi-gpt_image` when RubyGems publishing resumes.
+- `ruby/` publishes `runapi-gpt-image`.
 - `go/` publishes `github.com/runapi-ai/gpt-image-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
 - `java/` publishes `ai.runapi:runapi-gpt-image` and depends on `ai.runapi:runapi-core`.
 
@@ -112,6 +114,7 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 - SDK docs: https://runapi.ai/docs#sdk-gpt-image
 - Product docs: https://runapi.ai/docs#gpt-image
 - SDK repository: https://github.com/runapi-ai/gpt-image-sdk
+- PHP package repository: https://github.com/runapi-ai/gpt-image-php
 - Skill repository: https://github.com/runapi-ai/gpt-image
 - Provider comparison: https://runapi.ai/providers/openai
 - Full catalog: https://runapi.ai/models
@@ -131,7 +134,7 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ### Which package should I install for GPT Image work?
 
-Install the model package for your language: `@runapi.ai/gpt-image` on npm, `runapi-gpt-image` on PyPI, `runapi-gpt_image` on RubyGems, `github.com/runapi-ai/gpt-image-sdk/go`, or `ai.runapi:runapi-gpt-image`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/gpt-image` on npm, `runapi-gpt-image` on PyPI, `runapi-gpt-image` on RubyGems, `github.com/runapi-ai/gpt-image-sdk/go`, `ai.runapi:runapi-gpt-image` on Maven Central, or `runapi-ai/gpt-image` on Packagist. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
