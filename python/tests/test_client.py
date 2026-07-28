@@ -69,7 +69,7 @@ def test_exposes_resource_accessors():
 
 
 def test_text_to_image_create_posts_compacted_body():
-    fake = FakeHttp({"id": "t1", "status": "pending"})
+    fake = FakeHttp({"id": "t1", "status": "pending", "task_replayed": True})
     client = GptImageClient(api_key="k", http_client=fake)
     result = client.text_to_image.create(
         model="gpt-image-1.5",
@@ -86,6 +86,7 @@ def test_text_to_image_create_posts_compacted_body():
         ),
     ]
     assert isinstance(result, TextToImageResponse)
+    assert result.task_replayed is True
 
 
 def test_text_to_image_get_fetches_by_id():

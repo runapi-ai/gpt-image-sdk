@@ -26,7 +26,7 @@ func (s *stubHTTPClient) Request(_ context.Context, method, path string, opts *c
 
 func TestTextToImageCreate(t *testing.T) {
 	stub := &stubHTTPClient{
-		response: json.RawMessage(`{"id":"task_gen_123","status":"processing"}`),
+		response: json.RawMessage(`{"id":"task_gen_123","status":"processing","task_replayed":true}`),
 	}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
@@ -50,6 +50,9 @@ func TestTextToImageCreate(t *testing.T) {
 	}
 	if resp.ID != "task_gen_123" {
 		t.Fatalf("unexpected task ID: %v", resp.ID)
+	}
+	if !resp.TaskReplayed {
+		t.Fatal("expected task_replayed to be preserved")
 	}
 }
 

@@ -14,6 +14,7 @@ module RunApi
       class TextToImageResponse < RunApi::Core::TaskResponse
         required :id, String
         optional :status, String, enum: -> { RunApi::Core::TaskResponse::Status::ALL }
+        optional :task_replayed
         optional :images, [-> { Image }]
         optional :error, String
       end

@@ -1,5 +1,7 @@
 package gptimage
 
+import "github.com/runapi-ai/core-sdk/go/core"
+
 // TaskStatus represents the lifecycle state of an async generation task
 // (e.g. "pending", "processing", "completed", "failed").
 type TaskStatus string
@@ -29,6 +31,7 @@ type EditImageParams struct {
 // AsyncTaskResponse is the base response for asynchronous generation tasks.
 // It implements [core.TaskResponse] so it can be used with the SDK polling helpers.
 type AsyncTaskResponse struct {
+	core.TaskBillingFacts
 	ID     string     `json:"id"`
 	Status TaskStatus `json:"status"`
 	Error  string     `json:"error,omitempty"`

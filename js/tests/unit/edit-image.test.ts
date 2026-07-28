@@ -14,7 +14,7 @@ describe('EditImage', () => {
 
   describe('create', () => {
     it('should send correct request for image editing', async () => {
-      const mockResponse: TaskCreateResponse = { id: 'task-edit-123', status: 'processing' };
+      const mockResponse: TaskCreateResponse = { id: 'task-edit-123', status: 'processing', task_replayed: true };
       vi.mocked(mockHttp.request).mockResolvedValueOnce(mockResponse);
 
       const editImage = new EditImage(mockHttp);
@@ -43,7 +43,7 @@ describe('EditImage', () => {
     });
 
     it('should send multiple source_image_urls', async () => {
-      const mockResponse: TaskCreateResponse = { id: 'task-edit-456', status: 'processing' };
+      const mockResponse: TaskCreateResponse = { id: 'task-edit-456', status: 'processing', task_replayed: false };
       vi.mocked(mockHttp.request).mockResolvedValueOnce(mockResponse);
 
       const editImage = new EditImage(mockHttp);

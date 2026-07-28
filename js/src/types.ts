@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskBillingResponse, TaskResponse } from '@runapi.ai/core';
 
 /** Single model slug for all GPT Image 1.5 operations. */
 export type GptImageModel = 'gpt-image-1.5';
@@ -47,9 +47,11 @@ export interface EditImageParams {
 }
 
 /** Acknowledged task with its server-assigned ID. */
-export interface TaskCreateResponse {
+export interface TaskCreateResponse extends TaskBillingResponse {
   id: string;
   status: string;
+  /** True when this idempotency key reused the original task. */
+  task_replayed?: boolean;
 }
 
 /** A single generated image with its CDN URL. */
@@ -61,7 +63,7 @@ export interface Image {
  * Generation result for a GPT Image 1.5 task.
  * `images` is populated once `status` reaches `'completed'`.
  */
-export interface TextToImageResponse {
+export interface TextToImageResponse extends TaskResponse {
   id: string;
   status: AsyncTaskStatus;
   images?: Image[];

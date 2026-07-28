@@ -12,11 +12,12 @@ RSpec.describe RunApi::GptImage::Resources::TextToImage do
       params = {model: "gpt-image-1.5", prompt: "a futuristic cityscape",
                 aspect_ratio: "1:1", quality: "high"}
       expect(http).to receive(:request).with(:post, endpoint, body: params)
-        .and_return("id" => "task-1")
+        .and_return("id" => "task-1", "task_replayed" => true)
 
       result = text_to_image.create(**params)
       expect(result).to be_a(RunApi::GptImage::Types::TextToImageResponse)
       expect(result.id).to eq("task-1")
+      expect(result.task_replayed).to be(true)
     end
 
     it "includes optional params when provided" do

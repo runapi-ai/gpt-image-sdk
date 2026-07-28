@@ -14,7 +14,7 @@ describe('TextToImage', () => {
 
   describe('create', () => {
     it('should send correct request for text-to-image', async () => {
-      const mockResponse: TaskCreateResponse = { id: 'task-gen-123', status: 'processing' };
+      const mockResponse: TaskCreateResponse = { id: 'task-gen-123', status: 'processing', task_replayed: false };
       vi.mocked(mockHttp.request).mockResolvedValueOnce(mockResponse);
 
       const textToImage = new TextToImage(mockHttp);
@@ -41,7 +41,7 @@ describe('TextToImage', () => {
     });
 
     it('should send required params only (no callback_url)', async () => {
-      const mockResponse: TaskCreateResponse = { id: 'task-gen-456', status: 'processing' };
+      const mockResponse: TaskCreateResponse = { id: 'task-gen-456', status: 'processing', task_replayed: false };
       vi.mocked(mockHttp.request).mockResolvedValueOnce(mockResponse);
 
       const textToImage = new TextToImage(mockHttp);
