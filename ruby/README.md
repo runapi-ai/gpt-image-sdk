@@ -2,7 +2,7 @@
 
 The GPT Image Ruby SDK is the language-specific package for GPT Image on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Ruby.
 
-This README is the Ruby package guide inside the public `gpt-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-image; for API reference, use https://runapi.ai/docs#gpt-image; for SDK docs, use https://runapi.ai/docs#sdk-gpt-image.
+This README is the Ruby package guide inside the public `gpt-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-image; for API reference, use https://runapi.ai/docs/api/gpt-image/text-to-image; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Install
 
@@ -17,7 +17,7 @@ require "runapi/gpt_image"
 
 client = RunApi::GptImage::Client.new
 task = client.text_to_image.create(
-  # Pass the GPT Image JSON request body from https://runapi.ai/docs#gpt-image.
+  # Pass the GPT Image JSON request body from https://runapi.ai/docs/api/gpt-image/text-to-image.
 )
 status = client.text_to_image.get(task.id)
 ```
@@ -33,8 +33,8 @@ Use Ruby keyword arguments and the `RunApi::GptImage` error classes when buildin
 ## Links
 
 - Model page: https://runapi.ai/models/gpt-image
-- SDK docs: https://runapi.ai/docs#sdk-gpt-image
-- Product docs: https://runapi.ai/docs#gpt-image
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/gpt-image/text-to-image
 - Pricing and rate limits: https://runapi.ai/models/gpt-image
 - Provider comparison: https://runapi.ai/providers/openai
 - Full catalog: https://runapi.ai/models

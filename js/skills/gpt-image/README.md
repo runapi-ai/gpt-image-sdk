@@ -59,8 +59,8 @@ const result = await client.textToImage.run({
 ## Routing
 
 - Model page: https://runapi.ai/models/gpt-image
-- Product docs: https://runapi.ai/docs#gpt-image
-- SDK docs: https://runapi.ai/docs#sdk-gpt-image
+- Product docs: https://runapi.ai/docs/api/gpt-image/text-to-image
+- SDK docs: https://runapi.ai/docs/resources/sdks
 - SDK repository: https://github.com/runapi-ai/gpt-image-sdk
 - Pricing and rate limits: https://runapi.ai/models/gpt-image
 - Provider comparison: https://runapi.ai/providers/openai

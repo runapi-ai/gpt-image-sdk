@@ -4,7 +4,7 @@
 
 The GPT Image Java SDK is the language-specific package for GPT Image on RunAPI. Use it when your Java application needs typed builders, strict request validation, task status lookup, local polling helpers, file uploads, account helpers, and consistent RunAPI errors for GPT Image workflows.
 
-This README is the Java package guide inside the public `gpt-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-image; for API reference, use https://runapi.ai/docs#gpt-image; for SDK docs, use https://runapi.ai/docs#sdk-gpt-image.
+This README is the Java package guide inside the public `gpt-image-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/gpt-image; for API reference, use https://runapi.ai/docs/api/gpt-image/text-to-image; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Requirements
 
@@ -177,8 +177,8 @@ try {
 ## Links
 
 - Model page: https://runapi.ai/models/gpt-image
-- SDK docs: https://runapi.ai/docs#sdk-gpt-image
-- Product docs: https://runapi.ai/docs#gpt-image
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/gpt-image/text-to-image
 - Pricing and rate limits: https://runapi.ai/models/gpt-image
 - Full catalog: https://runapi.ai/models
 - Repository: https://github.com/runapi-ai/gpt-image-sdk
