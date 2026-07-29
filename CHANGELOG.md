@@ -1,5 +1,11 @@
 # Changelog
 
+## [python/v0.2.2](https://github.com/runapi-ai/gpt-image-sdk/releases/tag/python%2Fv0.2.2) - 2026-07-29
+
+### Fixed
+- Point package documentation metadata to the current RunAPI Developer Docs.
+
+
 ## [go/v0.2.8](https://github.com/runapi-ai/gpt-image-sdk/releases/tag/go%2Fv0.2.8) - 2026-07-28
 
 ### Added
