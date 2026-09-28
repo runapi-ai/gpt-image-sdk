@@ -31,7 +31,7 @@ type EditImageParams struct {
 // AsyncTaskResponse is the base response for asynchronous generation tasks.
 // It implements [core.TaskResponse] so it can be used with the SDK polling helpers.
 type AsyncTaskResponse struct {
-	core.TaskBillingFacts
+	Usage *core.TaskUsage `json:"usage,omitempty"`
 	ID     string     `json:"id"`
 	Status TaskStatus `json:"status"`
 	Error  string     `json:"error,omitempty"`

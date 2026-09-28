@@ -26,15 +26,13 @@ func (s *stubHTTPClient) Request(_ context.Context, method, path string, opts *c
 
 func TestTextToImageCreate(t *testing.T) {
 	stub := &stubHTTPClient{
-		response: json.RawMessage(`{"id":"task_gen_123","status":"processing","task_replayed":true}`),
-	}
+		response: json.RawMessage(`{"id":"task_gen_123","status":"processing","task_replayed":true}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
 		Model:       "gpt-image-1.5",
 		Prompt:      "a beautiful landscape",
 		AspectRatio: "1:1",
-		Quality:     "high",
-	})
+		Quality:     "high"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -58,8 +56,7 @@ func TestTextToImageCreate(t *testing.T) {
 
 func TestTextToImageGet(t *testing.T) {
 	stub := &stubHTTPClient{
-		response: json.RawMessage(`{"id":"task_gen_456","status":"completed","images":[{"url":"https://file.runapi.ai/result.png"}]}`),
-	}
+		response: json.RawMessage(`{"id":"task_gen_456","status":"completed", "usage": {"cost": 0.05},"images":[{"url":"https://file.runapi.ai/result.png"}]}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToImage.Get(context.Background(), "task_gen_abc")
 	if err != nil {
@@ -81,16 +78,14 @@ func TestTextToImageGet(t *testing.T) {
 
 func TestEditImageCreate(t *testing.T) {
 	stub := &stubHTTPClient{
-		response: json.RawMessage(`{"id":"task_edit_123","status":"processing"}`),
-	}
+		response: json.RawMessage(`{"id":"task_edit_123","status":"processing"}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.EditImage.Create(context.Background(), EditImageParams{
 		Model:           "gpt-image-1.5",
 		Prompt:          "transform into oil painting",
 		SourceImageURLs: []string{"https://cdn.runapi.ai/public/samples/photo.jpg"},
 		AspectRatio:     "3:2",
-		Quality:         "high",
-	})
+		Quality:         "high"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -112,8 +107,7 @@ func TestEditImageCreate(t *testing.T) {
 
 func TestEditImageGet(t *testing.T) {
 	stub := &stubHTTPClient{
-		response: json.RawMessage(`{"id":"task_edit_456","status":"completed","images":[{"url":"https://file.runapi.ai/edited.png"}]}`),
-	}
+		response: json.RawMessage(`{"id":"task_edit_456","status":"completed", "usage": {"cost": 0.05},"images":[{"url":"https://file.runapi.ai/edited.png"}]}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.EditImage.Get(context.Background(), "task_edit_abc")
 	if err != nil {

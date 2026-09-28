@@ -83,8 +83,7 @@ def test_text_to_image_create_posts_compacted_body():
             "post",
             "/api/v1/gpt_image/text_to_image",
             {"model": "gpt-image-1.5", "prompt": "hello world", "aspect_ratio": "1:1", "quality": "high"},
-        ),
-    ]
+        )]
     assert isinstance(result, TextToImageResponse)
     assert result.task_replayed is True
 
@@ -115,10 +114,8 @@ def test_edit_image_create_posts_compacted_body():
                 "prompt": "oil painting",
                 "source_image_urls": ["https://runapi.ai/a.jpg"],
                 "aspect_ratio": "2:3",
-                "quality": "medium",
-            },
-        ),
-    ]
+                "quality": "medium"},
+        )]
     assert isinstance(result, TextToImageResponse)
 
 
@@ -132,7 +129,7 @@ def test_edit_image_get_fetches_by_id():
 def test_run_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
-        {"id": "t1", "status": "completed", "images": [{"url": "https://x/y.png"}]},
+        {"id": "t1", "status": "completed", "usage": {"cost": 0.05}, "images": [{"url": "https://x/y.png"}]},
     )
     client = GptImageClient(api_key="k", http_client=fake)
     result = client.text_to_image.run(
