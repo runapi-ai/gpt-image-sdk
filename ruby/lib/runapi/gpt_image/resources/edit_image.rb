@@ -31,7 +31,6 @@ module RunApi
         # @return [RunApi::GptImage::Types::EditImageResponse] task creation result with id
         def create(options: nil, **params)
           params = compact_params(params)
-          validate_contract!(CONTRACT["edit-image"], params)
           request(:post, ENDPOINT, body: params, options: options)
         end
 

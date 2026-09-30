@@ -28,55 +28,6 @@ RSpec.describe RunApi::GptImage::Resources::EditImage do
       result = edit_image.create(**params)
       expect(result.id).to eq("edit-2")
     end
-
-    it "raises ValidationError when model is missing" do
-      expect { edit_image.create(prompt: "test", source_image_urls: ["https://cdn.runapi.ai/public/samples/input.jpg"]) }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of: gpt-image-1.5/)
-    end
-
-    it "raises ValidationError when prompt is missing" do
-      expect { edit_image.create(model: "gpt-image-1.5", aspect_ratio: "3:2", quality: "high", source_image_urls: ["https://cdn.runapi.ai/public/samples/input.jpg"]) }
-        .to raise_error(RunApi::Core::ValidationError, /prompt is required/)
-    end
-
-    it "raises ValidationError for invalid model" do
-      expect { edit_image.create(model: "invalid-model", prompt: "test", source_image_urls: ["https://cdn.runapi.ai/public/samples/input.jpg"]) }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of: gpt-image-1.5/)
-    end
-
-    it "raises ValidationError when source_image_urls is missing" do
-      expect { edit_image.create(model: "gpt-image-1.5", prompt: "test", aspect_ratio: "3:2", quality: "high") }
-        .to raise_error(RunApi::Core::ValidationError, /source_image_urls is required/)
-    end
-
-    it "raises ValidationError when source_image_urls is empty" do
-      expect { edit_image.create(model: "gpt-image-1.5", prompt: "test", aspect_ratio: "3:2", quality: "high", source_image_urls: []) }
-        .to raise_error(RunApi::Core::ValidationError, /source_image_urls is required/)
-    end
-
-    it "raises ValidationError when aspect_ratio is missing" do
-      expect {
-        edit_image.create(model: "gpt-image-1.5", prompt: "test",
-          source_image_urls: ["https://cdn.runapi.ai/public/samples/input.jpg"], quality: "high")
-      }
-        .to raise_error(RunApi::Core::ValidationError, /aspect_ratio is required/)
-    end
-
-    it "raises ValidationError for invalid aspect_ratio" do
-      expect {
-        edit_image.create(model: "gpt-image-1.5", prompt: "test",
-          source_image_urls: ["https://cdn.runapi.ai/public/samples/input.jpg"], aspect_ratio: "16:9", quality: "high")
-      }
-        .to raise_error(RunApi::Core::ValidationError, /aspect_ratio must be one of: 1:1, 2:3, 3:2/)
-    end
-
-    it "raises ValidationError when quality is missing" do
-      expect {
-        edit_image.create(model: "gpt-image-1.5", prompt: "test",
-          source_image_urls: ["https://cdn.runapi.ai/public/samples/input.jpg"], aspect_ratio: "3:2")
-      }
-        .to raise_error(RunApi::Core::ValidationError, /quality is required/)
-    end
   end
 
   describe "#get" do

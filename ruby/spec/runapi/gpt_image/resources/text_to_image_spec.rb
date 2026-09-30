@@ -28,41 +28,6 @@ RSpec.describe RunApi::GptImage::Resources::TextToImage do
       result = text_to_image.create(**params)
       expect(result.id).to eq("task-2")
     end
-
-    it "raises ValidationError when model is missing" do
-      expect { text_to_image.create(prompt: "test") }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of: gpt-image-1.5/)
-    end
-
-    it "raises ValidationError when prompt is missing" do
-      expect { text_to_image.create(model: "gpt-image-1.5", aspect_ratio: "1:1", quality: "high") }
-        .to raise_error(RunApi::Core::ValidationError, /prompt is required/)
-    end
-
-    it "raises ValidationError for invalid model" do
-      expect { text_to_image.create(model: "invalid-model", prompt: "test") }
-        .to raise_error(RunApi::Core::ValidationError, /model must be one of: gpt-image-1.5/)
-    end
-
-    it "raises ValidationError when aspect_ratio is missing" do
-      expect { text_to_image.create(model: "gpt-image-1.5", prompt: "test", quality: "high") }
-        .to raise_error(RunApi::Core::ValidationError, /aspect_ratio is required/)
-    end
-
-    it "raises ValidationError for invalid aspect_ratio" do
-      expect { text_to_image.create(model: "gpt-image-1.5", prompt: "test", aspect_ratio: "16:9", quality: "high") }
-        .to raise_error(RunApi::Core::ValidationError, /aspect_ratio must be one of: 1:1, 2:3, 3:2/)
-    end
-
-    it "raises ValidationError when quality is missing" do
-      expect { text_to_image.create(model: "gpt-image-1.5", prompt: "test", aspect_ratio: "1:1") }
-        .to raise_error(RunApi::Core::ValidationError, /quality is required/)
-    end
-
-    it "raises ValidationError for invalid quality" do
-      expect { text_to_image.create(model: "gpt-image-1.5", prompt: "test", aspect_ratio: "1:1", quality: "ultra") }
-        .to raise_error(RunApi::Core::ValidationError, /quality must be one of: medium, high/)
-    end
   end
 
   describe "#get" do

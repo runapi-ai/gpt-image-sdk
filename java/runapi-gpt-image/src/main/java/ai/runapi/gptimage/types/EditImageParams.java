@@ -15,10 +15,10 @@ public final class EditImageParams {
 
   private EditImageParams(Builder builder) {
     this.model = builder.model;
-    this.prompt = GptimageParamUtils.requireNonBlank(builder.prompt, "prompt");
-    this.sourceImageUrls = GptimageParamUtils.requiredStrings(builder.sourceImageUrls, "sourceImageUrls");
-    this.aspectRatio = GptimageParamUtils.requireNonBlank(builder.aspectRatio, "aspectRatio");
-    this.quality = GptimageParamUtils.requireNonBlank(builder.quality, "quality");
+    this.prompt = builder.prompt;
+    this.sourceImageUrls = GptimageParamUtils.strings(builder.sourceImageUrls);
+    this.aspectRatio = builder.aspectRatio;
+    this.quality = builder.quality;
     this.callbackUrl = builder.callbackUrl;
   }
 
@@ -65,14 +65,14 @@ public final class EditImageParams {
 
     /** Sets the model slug using a string value. */
     public Builder model(String value) {
-      this.model = GptimageParamUtils.requireNonBlankTrim(value, "model");
+      this.model = value;
       return this;
     }
 
 
     /** Sets the text prompt. */
     public Builder prompt(String value) {
-      this.prompt = GptimageParamUtils.requireNonBlank(value, "prompt");
+      this.prompt = value;
       return this;
     }
 
@@ -84,19 +84,19 @@ public final class EditImageParams {
 
     /** Sets the output aspect ratio. */
     public Builder aspectRatio(String value) {
-      this.aspectRatio = GptimageParamUtils.requireNonBlank(value, "aspectRatio");
+      this.aspectRatio = value;
       return this;
     }
 
     /** Sets the quality. */
     public Builder quality(String value) {
-      this.quality = GptimageParamUtils.requireNonBlank(value, "quality");
+      this.quality = value;
       return this;
     }
 
     /** Sets the webhook URL for task completion notifications. */
     public Builder callbackUrl(String value) {
-      this.callbackUrl = GptimageParamUtils.requireNonBlank(value, "callbackUrl");
+      this.callbackUrl = value;
       return this;
     }
 
